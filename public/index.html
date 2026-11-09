@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consensus Bets</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">◆ <span>Consensus</span></a>
+
+    <div></div>
+
+    <div class="top-actions">
+      <button class="btn-dark" id="refreshBtn" type="button">↻ Refresh</button>
+      <button class="btn-dark slip-toggle" id="slipToggle" type="button">Planner <span class="count" id="slipCount">0</span></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main>
+      <div class="status-line" id="updated">Loading…</div>
+
+      <nav class="sport-pills" id="sportPills" aria-label="Sport"></nav>
+
+      <section class="controls" aria-label="Filters">
+        <label class="slider">
+          <span>Min. top bettors agreeing <strong id="agreeVal">2</strong></span>
+          <input id="agree" type="range" min="2" max="50" step="1" value="2" />
+        </label>
+        <label class="toggle"><input id="showFlagged" type="checkbox" /><span></span> Show started &amp; filtered</label>
+        <label class="toggle"><input id="booksOnly" type="checkbox" /><span></span> Sportsbook odds only</label>
+        <input id="search" type="search" placeholder="Search teams…" aria-label="Search teams" />
+      </section>
+
+      <section class="summary" id="summary" aria-label="Summary"></section>
+
+      <section id="events" class="events" aria-label="Consensus bets"></section>
+      <div id="empty" class="empty" hidden></div>
+
+      <footer>
+        This app only suggests how to split your money; it never places bets or connects to any betting site.
+        Odds: best price across US sportsbooks via The Odds API, or converted from Polymarket ("PM") when no sportsbook offers that bet.
+        Win chances come from Polymarket prices and can be wrong. Not financial advice. Bet only what you can afford to lose.
+      </footer>
+    </main>
+
+    <aside class="slip" id="slip" aria-label="Bet planner">
+      <div class="slip-tabs">
+        <h2 class="planner-title">Bet Planner</h2>
+        <button class="slip-close" id="slipClose" aria-label="Close planner">×</button>
+      </div>
+      <div id="slipBody" class="slip-body"></div>
+    </aside>
+  </div>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <button class="close" id="closeDrawer" aria-label="Close">×</button>
+      <div id="detail"></div>
+    </div>
+  </aside>
+  <div id="scrim" class="scrim" hidden></div>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
